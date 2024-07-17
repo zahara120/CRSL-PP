@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Polka Dot Blouse",
+        "description": "graphic tee",
+        "price": 319514,
+        "stock": 5,
+        "CategoryId": 4
+    },
+    {
+        "name": "Plaid Pants",
+        "description": "cargo shorts",
+        "price": 396034,
+        "stock": 3,
+        "CategoryId": 4
+    },
+    {
+        "name": "Knit Beanie",
+        "description": "graphic tee",
+        "price": 324493,
+        "stock": 10,
+        "CategoryId": 5
+    },
+    {
+        "name": "Floral Skirt",
+        "description": "leather boots",
+        "price": 730863,
+        "stock": 4,
+        "CategoryId": 4
+    },
+    {
+        "name": "Plaid Pants",
+        "description": "silk scarf",
+        "price": 360333,
+        "stock": 10,
+        "CategoryId": 1
+    },
+    {
+        "name": "Knit Beanie",
+        "description": "denim jacket",
+        "price": 950673,
+        "stock": 3,
+        "CategoryId": 5
+    },
+    {
+        "name": "Polka Dot Blouse",
+        "description": "cargo shorts",
+        "price": 635545,
+        "stock": 5,
+        "CategoryId": 5
+    },
+    {
+        "name": "Sunny Dress",
+        "description": "cargo shorts",
+        "price": 455031,
+        "stock": 10,
+        "CategoryId": 3
+    },
+    {
+        "name": "Plaid Pants",
+        "description": "silk scarf",
+        "price": 834014,
+        "stock": 1,
+        "CategoryId": 1
+    },
+    {
+        "name": "Cargo Shorts",
+        "description": "graphic tee",
+        "price": 384254,
+        "stock": 2,
+        "CategoryId": 5
+    }
+]
