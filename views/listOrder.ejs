@@ -1,51 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>List Order</title>
+    <style>
+        section{
+            min-height: 100vh;
+            padding: 0 100px;   
+            margin: auto;
+        }
+    </style>
 </head>
+
 <body>
     <%- include('components/navbar') %>
-    <h1>List Order</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>no</th>
-                <th>product</th>
-                <th>price</th>
-                <th>quantity</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <% if (data) { %>
-            <tbody>
-                <% data.Products.forEach((el, index) => { %>
+        <section class="my-5">
+            <h1>List Order</h1>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td><%= index+1 %></td>
-                        <td>
-                            <%= el.name %>
-                        </td>
-                        <td><%= formatCurrency(el.price) %></td>
-                        <td><%= el.OrderProduct.quantity %></td>
-                        <td>
-                            <a href="/orders/<%= data.id %>/delete">delete</a>
-                        </td>
+                        <th>No</th>
+                        <th>Products</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
                     </tr>
-                    <% }) %>
-                </tbody>
-        <% } else { %>
-            <tbody>
-                <tr>
-                    <td colspan="3">tidak ada data</td>
-                </tr>
-            </tbody>
-        <% } %>
-        </table>
-        <% if (data) { %>
-            <p>Status : <%= data.status %></p>
-            <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
-            <a href="/orders/<%= data.id %>/checkout">checkout</a>
-        <% } %>
+                </thead>
+                <% if (data) { %>
+                    <tbody>
+                        <% data.Products.forEach((el, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <%= el.name %>
+                                </td>
+                                <td>
+                                    <%= formatCurrency(el.price) %>
+                                </td>
+                                <td>
+                                    <%= el.OrderProduct.quantity %>
+                                </td>
+                                <td>
+                                    <a href="/orders/<%= data.id %>/delete">
+                                        <button class="btn btn-sm btn-danger">delete</button>
+                                    </a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                    <% } %>
+            </table>
+            <% if (data) { %>
+                <p>
+                    Status : <span class="badge text-bg-warning"><%= data.status %></span>
+                </p>
+                <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
+                <a href="/orders/<%= data.id %>/checkout">
+                    <button type="button" class="btn btn-dark">Proceed To Checkout</button>
+                </a>
+            <% } %>
+            <% if (!data) { %>
+                <div class="alert alert-danger" role="alert">
+                    No Data
+                </div>
+            <% } %>
+        </section>
 </body>
+
 </html>
