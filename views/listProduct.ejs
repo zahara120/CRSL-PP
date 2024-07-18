@@ -61,10 +61,10 @@
                                 </div>
                                 <p>
                                     <% if (locals.user.role === 'admin') { %>
-                                        <a href="/products/<%= el.id %>/edit" class="btn btn-sm btn-primary">Edit</a>
-                                        <a href="/products/<%= el.id %>/delete" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="/products/<%= el.id %>/edit" class="btn btn-sm btn-outline-primary">Edit</a>
+                                        <a href="/products/<%= el.id %>/delete" class="btn btn-sm btn-outline-danger">Delete</a>
                                     <% } %>
-                                    <a href="/products/<%= el.id %>/detail" class="btn btn-sm btn-secondary">Detail</a>
+                                    <a href="/products/<%= el.id %>/detail" class="btn btn-sm btn-outline-secondary">Detail</a>
                                 </p>
                             </div>
                         </div>
@@ -73,5 +73,6 @@
             </div>
         </div>
     </section>
+    <%- include('components/footer') %>
 </body>
 </html>
