@@ -1,5 +1,12 @@
 @import url('style.css');
 
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 .main-container {
     flex: 1;
     display: flex;
