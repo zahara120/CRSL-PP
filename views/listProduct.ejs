@@ -8,6 +8,11 @@
 <body>
     <%- include('navbar') %>
     <h1>List Product</h1>
+    <div>
+        <% categories.forEach(el => { %>
+            <a href="/products?category=<%= el.id %>"><%= el.name %></a>
+        <% }) %>
+    </div>
     <table>
         <thead>
             <tr>

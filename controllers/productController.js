@@ -5,12 +5,11 @@ const { formatCurrency } = require('../helpers/formatter')
 class ProductController {
     static async showListProduct(req, res) {
         try {
-            let data = await Product.findAll({
-                where: { stock: { [Op.gt]: 0 } },
-                include: Category
-            })
+            const { category } = req.query
+            let data = await Product.getAllData(category)
+            let categories = await Category.findAll()
             // res.send(data)
-            res.render('listProduct', { data, formatCurrency })
+            res.render('listProduct', { data, categories, formatCurrency })
         } catch (error) {
             res.send(error)
         }

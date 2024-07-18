@@ -1,6 +1,7 @@
 'use strict';
 const {
-  Model
+  Model,
+  Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
@@ -13,6 +14,21 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Product.belongsTo(models.Category)
       Product.belongsToMany(models.Order, { through: models.OrderProduct })
+    }
+    static getAllData(category) {
+      let query = {
+        where: {
+          stock: {
+            [Op.gt]: 0
+          }
+        },
+        include: sequelize.models.Category
+      }
+      if (category) {
+        query.where.CategoryId = category;
+      }
+
+      return Product.findAll(query)
     }
   }
   Product.init({
