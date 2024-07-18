@@ -19,6 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER,
     quantity: DataTypes.INTEGER
   }, {
+    hooks: {
+      beforeCreate: (orderProduct) => {
+        orderProduct.price = orderProduct.price * orderProduct.quantity;
+      },
+    },
     sequelize,
     modelName: 'OrderProduct',
   });

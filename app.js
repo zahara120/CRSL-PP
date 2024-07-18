@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const auth = require('./routes/auth')
 const product = require('./routes/product')
+const order = require('./routes/order')
 const session = require('express-session');
 const AuthController = require('./controllers/authController')
 
@@ -29,6 +30,7 @@ app.use(function(req, res, next) {
 })
 
 app.use('/products', product)
+app.use('/orders', order)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

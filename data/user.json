@@ -2,31 +2,7 @@
     {
         "username": "admin",
         "email": "admin@mail.com",
-        "password": "123",
+        "password": "v",
         "role" : "admin"
-    },
-    {
-        "username": "wantliff1",
-        "email": "bblabie1@tripadvisor.com",
-        "password": "yO5$3ou8+.q?",
-        "role" : "user"
-    },
-    {
-        "username": "gcampes2",
-        "email": "drigolle2@rakuten.co.jp",
-        "password": "uZ7`'D4{",
-        "role" : "user"
-    },
-    {
-        "username": "ltupper3",
-        "email": "mgoldsworthy3@tinypic.com",
-        "password": "wN4!<F/?FcW/m`zW",
-        "role" : "user"
-    },
-    {
-        "username": "pproud4",
-        "email": "sgannaway4@yolasite.com",
-        "password": "mK0+|Uui",
-        "role" : "user"
     }
 ]

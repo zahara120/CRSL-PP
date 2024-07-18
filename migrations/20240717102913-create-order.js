@@ -20,11 +20,11 @@ module.exports = {
       },
       status: {
         type: Sequelize.STRING,
-        allowNull: false
+        defaultValue:'pending'
       },
       totalPrice: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        defaultValue:0
       },
       createdAt: {
         allowNull: false,

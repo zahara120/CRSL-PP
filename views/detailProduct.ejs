@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Product</title>
+</head>
+
+<body>
+    <%- include('navbar') %>
+    <h1>Detail Product</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>description</th>
+                <th>price</th>
+                <th>stock</th>
+                <th>category</th>
+                <th>quantity</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <%= data.id %>
+                </td>
+                <td>
+                    <%= data.name %>
+                </td>
+                <td>
+                    <%= data.description %>
+                </td>
+                <td>
+                    <%= data.price %>
+                </td>
+                <td>
+                    <%= data.stock %>
+                </td>
+                <td>
+                    <%= data.Category.name %>
+                </td>
+                <form action="/orders/<%= data.id %>" method="post">
+                    <td>
+                        <button type="button" id="decrement">-</button>
+                        <input type="number" name="quantity" id="quantity" required value="1" min="1">
+                        <button type="button" id="increment">+</button>
+                    </td>
+                    <td>
+                        <button type="submit">Buy</button>
+                    </td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    document.getElementById('increment').addEventListener('click', function () {
+        var quantityInput = document.getElementById('quantity');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+
+    document.getElementById('decrement').addEventListener('click', function () {
+        var quantityInput = document.getElementById('quantity');
+        if (quantityInput.value > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    });
+</script>
+</html>

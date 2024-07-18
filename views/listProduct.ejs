@@ -6,6 +6,37 @@
     <title>List Product</title>
 </head>
 <body>
-    <h1>ini list product</h1>
+    <%- include('navbar') %>
+    <h1>List Product</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>no</th>
+                <th>id</th>
+                <th>name</th>
+                <th>description</th>
+                <th>price</th>
+                <th>stock</th>
+                <th>category_id</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach((el, index) => { %>
+                <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= el.id %></td>
+                    <td><%= el.name %></td>
+                    <td><%= el.description %></td>
+                    <td><%= el.price %></td>
+                    <td><%= el.stock %></td>
+                    <td><%= el.Category.name %></td>
+                    <td>
+                        <a href="/products/<%= el.id %>">detail</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </body>
 </html>

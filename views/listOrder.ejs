@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Order</title>
+</head>
+<body>
+    <%- include('navbar') %>
+    <h1>List Order</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>no</th>
+                <th>product</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <% if (data) { %>
+            <tbody>
+                <% data.Products.forEach((el, index) => { %>
+                    <tr>
+                        <td><%= index+1 %></td>
+                        <td>
+                            <%= el.name %>
+                        </td>
+                        <td><%= formatCurrency(el.price) %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+        <% } else { %>
+            <tbody>
+                <tr>
+                    <td colspan="3">tidak ada data</td>
+                </tr>
+            </tbody>
+        <% } %>
+        </table>
+        <% if (data) { %>
+            <p>Status : <%= data.status %></p>
+            <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
+            <a href="/orders/<%= data.id %>/checkout">checkout</a>
+        <% } %>
+</body>
+</html>

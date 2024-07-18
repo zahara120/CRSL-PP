@@ -11,7 +11,17 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Order.belongsToMany(models.Product, { through: 'OrderProducts' })
+      Order.belongsToMany(models.Product, { through: models.OrderProduct })
+    }
+    static async getTotalPrice(id) {
+      let order = await Order.findByPk(id, {
+        include: {
+          model: sequelize.models.Product
+        }
+      })
+      // console.log(order);
+      const totalPrice = order.Products.reduce((sum, product) => sum + product.price, 0);
+      return totalPrice;
     }
   }
   Order.init({
@@ -19,6 +29,11 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     totalPrice: DataTypes.INTEGER
   }, {
+    hooks: {
+      // beforeCreate: (Order) => {
+        
+      // },
+    },
     sequelize,
     modelName: 'Order',
   });
