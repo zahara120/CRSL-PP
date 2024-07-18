@@ -47,6 +47,11 @@
                         <button type="button" class="btn btn-outline-secondary" id="increment">+</button>
                     </div>
                     <div>
+                        <% if (errors) { %>
+                            <div class="alert alert-danger" role="alert">
+                                <p>Stock not enough</p>
+                            </div>
+                        <% } %>
                         <button style="width: 100%;" type="submit" class="btn btn-outline-success">Buy</button>
                     </div>
                 </form>

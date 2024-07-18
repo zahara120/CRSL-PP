@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>List Order</title>
+    <style>
+        section{
+            min-height: 100vh;
+            padding: 0 100px;   
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('components/navbar') %>
+        <section class="my-5">
+            <h1>History Order</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Status</th>
+                        <th>createdAt</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <% if (data) { %>
+                    <tbody>
+                        <% data.forEach((el, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <span class="badge text-bg-success"><%= el.status %></span>
+                                </td>
+                                <td>
+                                    <%= el.formattedCreatedAt %>
+                                </td>
+                                <td>
+                                    <%= formatCurrency(el.totalPrice) %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                    <% } %>
+            </table>
+        </section>
+</body>
+
+</html>

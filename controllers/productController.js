@@ -16,6 +16,7 @@ class ProductController {
     }
     static async detailProduct(req, res) {
         try {
+            const { errors } = req.query
             const { id } = req.params
             let data = await Product.findOne({
                 where: {
@@ -24,7 +25,7 @@ class ProductController {
                 include: Category
             })
             // res.send(data)
-            res.render('detailProduct', { data, formatCurrency })
+            res.render('detailProduct', { data, formatCurrency, errors })
         } catch (error) {
             res.send(error)
         }

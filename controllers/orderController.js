@@ -23,9 +23,25 @@ class OrderController {
             res.send(error);
         }
     }
-    static async buy(req, res) {
+    static async showHistory(req, res) {
         try {
-            const { productId } = req.params;
+            const UserId = req.app.locals.user.id;
+            const data = await Order.findAll({
+                where: { status: 'paid', UserId: UserId },
+                order: [['createdAt', 'DESC']],
+                include:
+                {
+                    model: Product
+                },
+            });
+            res.render('history', { data, formatCurrency });
+        } catch (error) {
+            res.send(error);
+        }
+    }
+    static async buy(req, res) {
+        const { productId } = req.params;
+        try {
             const { quantity } = req.body;
             const UserId = req.app.locals.user.id;
 
@@ -68,7 +84,12 @@ class OrderController {
 
             res.redirect('/orders');
         } catch (error) {
-            res.send(error);
+            if(error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError'){
+                let errors = error.errors.map(el => el.message)
+                res.redirect(`/products/${productId}/detail?errors=${errors}`)
+            }else{
+                res.send(error)
+            }
         }
     }
     static async checkout(req, res) {

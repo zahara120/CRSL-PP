@@ -19,9 +19,10 @@
             <a href="/"><img src="/logo.svg" alt="logo"></a>
             <% if (locals.user.role === 'user') { %>
                 <div class="d-flex gap-4">
-                    <a href="/products">home</a>
-                    <a href="/products">list product</a>
-                    <a href="/orders">orders</a>
+                    <a href="/products">Home</a>
+                    <a href="/products">List product</a>
+                    <a href="/orders">Orders</a>
+                    <a href="/orders/history">History</a>
                 </div>
             <% } %>
             <% if (locals.user.role === 'admin') { %>

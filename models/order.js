@@ -23,17 +23,16 @@ module.exports = (sequelize, DataTypes) => {
       const totalPrice = order.Products.reduce((sum, product) => sum + product.price, 0);
       return totalPrice;
     }
+    get formattedCreatedAt() {
+      const rawValue = this.getDataValue('createdAt');
+      return rawValue ? rawValue.toISOString().slice(0, 10) : null;
+    }
   }
   Order.init({
     UserId: DataTypes.INTEGER,
     status: DataTypes.STRING,
     totalPrice: DataTypes.INTEGER
   }, {
-    hooks: {
-      // beforeCreate: (Order) => {
-        
-      // },
-    },
     sequelize,
     modelName: 'Order',
   });
