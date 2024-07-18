@@ -17,11 +17,11 @@
     <%- include('../components/navbar') %>
     <section class="my-5">
         <% if (errors) { %>
-            <ul>
+            <div class="alert alert-danger" role="alert">
                 <% errors.split(',').forEach(el => { %>
-                    <li><%= el %></li>
+                    <p><%= el %></p>
                 <% }) %>
-            </ul>
+            </div>
         <% } %>
         <form action="/products/add" method="post">
             <div class="mb-3">
