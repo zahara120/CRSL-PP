@@ -29,7 +29,7 @@ app.use(function(req, res, next) {
 
 app.use(function(req, res, next) {
   console.log(app.locals, '<<<<< locals');
-  app.locals.user = req.session.user
+  res.locals.user = req.session.user
   if(req.session.user) {
     next()
   } else {

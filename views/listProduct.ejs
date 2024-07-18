@@ -28,11 +28,11 @@
                     <td><%= el.id %></td>
                     <td><%= el.name %></td>
                     <td><%= el.description %></td>
-                    <td><%= el.price %></td>
+                    <td><%= formatCurrency(el.price) %></td>
                     <td><%= el.stock %></td>
                     <td><%= el.Category.name %></td>
                     <td>
-                        <a href="/products/<%= el.id %>">detail</a>
+                        <a href="/products/<%= el.id %>/detail">detail</a>
                     </td>
                 </tr>
             <% }) %>

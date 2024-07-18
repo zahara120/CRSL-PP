@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+</head>
+<body>
+    <form action="/products/add" method="post">
+        <label for="name">product name</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <label for="description">product description</label>
+        <input type="text" name="description" id="description">
+        <br>
+        <label for="price">product price</label>
+        <input type="number" name="price" id="price">
+        <br>
+        <label for="stock">product stock</label>
+        <input type="number" name="stock" id="stock">
+        <br>
+        <label for="CategoryId">product category</label>
+        <select name="CategoryId" id="CategoryId">
+            <option value="">select category</option>
+            <% data.forEach(el => { %>
+                <option value="<%= el.id %>"><%= el.name %></option>
+            <% }) %>
+        </select>
+        <br>
+        <input type="submit" value="Add Product">
+    </form>
+</body>
+</html>
