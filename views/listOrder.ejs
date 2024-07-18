@@ -14,6 +14,7 @@
                 <th>no</th>
                 <th>product</th>
                 <th>price</th>
+                <th>quantity</th>
             </tr>
         </thead>
         <% if (data) { %>
@@ -25,6 +26,7 @@
                             <%= el.name %>
                         </td>
                         <td><%= formatCurrency(el.price) %></td>
+                        <td><%= el.OrderProduct.quantity %></td>
                     </tr>
                     <% }) %>
                 </tbody>

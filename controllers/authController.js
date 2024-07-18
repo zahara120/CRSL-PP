@@ -42,7 +42,7 @@ class AuthController{
             if (user) {
                 const isPasswordValid = await bcrypt.compare(password, user.password);
                 if (isPasswordValid) {
-                    req.session.userId = user.id; 
+                    req.session.user = user; 
                     return res.redirect('/products');
                 } else {
                     return res.send('Invalid email or password');

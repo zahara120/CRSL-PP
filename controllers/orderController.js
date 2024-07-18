@@ -4,7 +4,7 @@ const { Product, Category, Order, OrderProduct, User } = require('../models');
 class OrderController {
     static async listOrder(req, res) {
         try {
-            const UserId = req.session.userId;
+            const UserId = req.app.locals.user.id;
             const data = await Order.findOne({
                 where: { status: 'pending', UserId: UserId },
                 include:
@@ -17,6 +17,7 @@ class OrderController {
                 totalPrice = await Order.getTotalPrice(data.id);
             }
             // res.send(data)
+            // console.log(data.Products.OrderProduct);
             res.render('listOrder', { data, totalPrice, formatCurrency });
         } catch (error) {
             res.send(error);
@@ -26,7 +27,7 @@ class OrderController {
         try {
             const { productId } = req.params;
             const { quantity } = req.body;
-            const UserId = req.session.userId;
+            const UserId = req.app.locals.user.id;
 
             // Check user udah punya order atau belum
             const user = await User.findByPk(UserId, {
