@@ -21,8 +21,16 @@ app.get('/', AuthController.home)
 app.use('/', auth)
 
 app.use(function(req, res, next) {
-  console.log(req.session.userId, '<<<< session');
-  if(req.session.userId) {
+  app.locals = {
+    user: req.session.user,
+  }
+  next()
+})
+
+app.use(function(req, res, next) {
+  console.log(app.locals, '<<<<< locals');
+  app.locals.user = req.session.user
+  if(req.session.user) {
     next()
   } else {
     res.redirect('/login')
