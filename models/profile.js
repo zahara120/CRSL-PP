@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Profile.belongsTo(models.User)
     }
+    get bod() {
+      const rawValue = this.getDataValue('birthOfDate');
+      return rawValue ? rawValue.toISOString().slice(0, 10) : null;
+    }
   }
   Profile.init({
     gender: DataTypes.STRING,

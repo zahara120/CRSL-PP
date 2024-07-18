@@ -12,6 +12,7 @@ module.exports = {
     await queryInterface.addColumn('Profiles', 'UserId', {
       type: Sequelize.INTEGER,
       allowNull: false,
+      unique: true,
       references: {
         model: 'Users'
       },

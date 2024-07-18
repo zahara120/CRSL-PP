@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>User Profile</title>
+    <style>
+        section {
+            min-height: 100vh;
+            padding: 0 100px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('components/navbar') %>
+    <section class="my-5">
+        <h1 class="mb-5">User Profile</h1>
+        <% if (msg) { %>
+            <div class="alert alert-warning" role="alert">
+                <p><%= msg %></p>
+            </div>
+        <% } %>
+        <form action="/profile" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" type="text" name="username" id="username" disabled value="<%= locals.user.username %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" type="email" name="email" id="email" disabled value="<%= locals.user.email %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="gender">Gender</label>
+                <select class="form-select" name="gender" id="gender">
+                    <option value="">Select Gender</option>
+                    <option <%= data?.gender === 'Female' ? 'selected' : '' %> value="Female">Female</option>
+                    <option <%= data?.gender === 'Male' ? 'selected' : '' %> value="Male">Male</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="birthOfDate">Birth of Date</label>
+                <input class="form-control" type="date" name="birthOfDate" id="birthOfDate" value="<%= data?.bod || '' %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="address">Address</label>
+                <textarea class="form-control" rows="3" name="address" id="address"><%= data?.address || '' %></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="phone">Phone</label>
+                <input class="form-control" type="number" name="phone" id="phone" value="<%= data?.phone || '' %>">
+            </div>
+            <% if (!data?.id) { %>
+                <button type="submit" class="btn btn-outline-success">Save</button>
+            <% } %>
+        </form>
+    </section>
+</body>
+
+</html>

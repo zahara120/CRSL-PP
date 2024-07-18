@@ -35,6 +35,7 @@
                 <span class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Hello, <%= locals.user.username %></span>
                 <ul class="dropdown-menu">
                   <li class="dropdown-item text-success">Role : <%= locals.user.role %></li>
+                  <li><a class="dropdown-item" href="/profile">profile</a></li>
                   <li><a class="dropdown-item text-danger" href="/logout">logout</a></li>
                 </ul>
             </div>

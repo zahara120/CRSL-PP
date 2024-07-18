@@ -37,9 +37,10 @@ app.use(function(req, res, next) {
     res.redirect('/login')
   }
 })
-
 app.use('/products', product)
 app.use('/orders', order)
+app.get('/profile', AuthController.profile)
+app.post('/profile', AuthController.saveProfile)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

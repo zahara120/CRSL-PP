@@ -3,7 +3,7 @@
         "name": "Polka Dot Blouse",
         "description": "graphic tee",
         "price": 319514,
-        "stock": 5,
+        "stock": 15,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428935413268552/Rectangle_131.png?ex=669a3363&is=6698e1e3&hm=a9ecb683716414ef6e3414c897307e045f81f480734d5bf847ad6584e4732ae8&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 4
     },
@@ -11,7 +11,7 @@
         "name": "Plaid Pants",
         "description": "cargo shorts",
         "price": 396034,
-        "stock": 3,
+        "stock": 13,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428935413268552/Rectangle_131.png?ex=669a3363&is=6698e1e3&hm=a9ecb683716414ef6e3414c897307e045f81f480734d5bf847ad6584e4732ae8&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 4
     },
@@ -27,7 +27,7 @@
         "name": "Floral Skirt",
         "description": "leather boots",
         "price": 730863,
-        "stock": 4,
+        "stock": 14,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428935413268552/Rectangle_131.png?ex=669a3363&is=6698e1e3&hm=a9ecb683716414ef6e3414c897307e045f81f480734d5bf847ad6584e4732ae8&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 4
     },
@@ -43,7 +43,7 @@
         "name": "Knit Beanie",
         "description": "denim jacket",
         "price": 950673,
-        "stock": 3,
+        "stock": 13,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     },
@@ -51,7 +51,7 @@
         "name": "Polka Dot Blouse",
         "description": "cargo shorts",
         "price": 635545,
-        "stock": 5,
+        "stock": 15,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     },
@@ -67,7 +67,7 @@
         "name": "Plaid Pants",
         "description": "silk scarf",
         "price": 834014,
-        "stock": 1,
+        "stock": 10,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428870623727626/Rectangle_131.png?ex=669a3354&is=6698e1d4&hm=7fd175b640fcd18c08ba6e51d351cd1473c660a55be04f7c4bf09d69be418573&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 1
     },
@@ -75,7 +75,7 @@
         "name": "Cargo Shorts",
         "description": "graphic tee",
         "price": 384254,
-        "stock": 2,
+        "stock": 12,
         "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     }

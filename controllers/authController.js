@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Profile } = require('../models');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
 
@@ -69,6 +69,29 @@ class AuthController{
                 }
                 res.redirect('/');
             });
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async profile(req, res){
+        try {
+            let data = await Profile.findOne({ where: { UserId: req.app.locals.user.id } })
+            let msg = ''
+            if(!data) {
+                msg = 'please complete your profile'
+            }
+            res.render('profile', {data, msg})
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    static async saveProfile(req, res){
+        try {
+            const { gender, birthOfDate, address, phone } = req.body
+            const UserId = req.app.locals.user.id;
+            await Profile.create({ gender, birthOfDate, address, phone, UserId })
+            // res.send(req.body)
+            res.redirect('/profile')
         } catch (error) {
             res.send(error)
         }
