@@ -93,6 +93,21 @@ class OrderController {
             res.send(error);
         }
     }
+    static async deleteOrder(req, res) {
+        try {
+            const { orderId } = req.params;
+            await Order.destroy(
+                {
+                    where: {
+                        id: orderId,
+                    }
+                }
+            );
+            res.redirect('/orders');
+        } catch (error) {
+            res.send(error);
+        }
+    }
 }
 
 module.exports = OrderController;

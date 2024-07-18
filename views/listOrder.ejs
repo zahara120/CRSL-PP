@@ -15,6 +15,7 @@
                 <th>product</th>
                 <th>price</th>
                 <th>quantity</th>
+                <th>action</th>
             </tr>
         </thead>
         <% if (data) { %>
@@ -27,6 +28,9 @@
                         </td>
                         <td><%= formatCurrency(el.price) %></td>
                         <td><%= el.OrderProduct.quantity %></td>
+                        <td>
+                            <a href="/orders/<%= data.id %>/delete">delete</a>
+                        </td>
                     </tr>
                     <% }) %>
                 </tbody>

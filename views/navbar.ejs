@@ -7,7 +7,7 @@
 <body>
     <% if (locals.user.role === 'user') { %>
         <nav>
-            <a href="/">home</a>
+            <a href="/products">home</a>
             <a href="/products">list product</a>
             <a href="/orders">orders</a>
             <a href="/logout">logout</a>
@@ -15,10 +15,12 @@
     <% } %>
     <% if (locals.user.role === 'admin') { %>
         <nav>
-            <a href="/">home</a>
+            <a href="/products">home</a>
             <a href="/products/add">create new product</a>
             <a href="/logout">logout</a>
         </nav>
     <% } %>
+    <h1>Hello <%= locals.user.username %></h1>
+    <span>role: <%= locals.user.role %></span>
 </body>
 </html>
