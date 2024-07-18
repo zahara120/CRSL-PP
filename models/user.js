@@ -14,50 +14,58 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Profile)
       User.hasMany(models.Order)
     }
+    static async findPendingOrder(UserId) {
+      return await User.findByPk(UserId, {
+        include: {
+          model: sequelize.models.Order,
+          where: { status: 'pending' },
+        }
+      });
+    }
   }
   User.init({
     username: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        notNull:{
+      validate: {
+        notNull: {
           msg: 'username is required'
         },
-        notEmpty:{
-          msg:'username is required'
+        notEmpty: {
+          msg: 'username is required'
         }
       }
     },
     email: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        notNull:{
+      validate: {
+        notNull: {
           msg: 'email is required'
         },
-        notEmpty:{
-          msg:'email is required'
+        notEmpty: {
+          msg: 'email is required'
         },
         isEmail: {
           args: true,
           msg: 'email is not valid'
-        }    
+        }
       }
     },
     password: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        notNull:{
+      validate: {
+        notNull: {
           msg: 'password is required'
         },
-        notEmpty:{
-          msg:'password is required'
+        notEmpty: {
+          msg: 'password is required'
         }
       }
     },
     role: {
-      type:DataTypes.STRING,
+      type: DataTypes.STRING,
     }
   }, {
     sequelize,

@@ -47,41 +47,25 @@ class OrderController {
             const UserId = req.app.locals.user.id;
 
             // Check user udah punya order atau belum
-            const user = await User.findByPk(UserId, {
-                include: {
-                    model: Order,
-                    where: { status: 'pending' },
-                }
-            });
+            const user = await User.findPendingOrder(UserId);
 
             // Ambil harga produk dari database
             const product = await Product.findByPk(productId);
-
+            
+            let order;
             // Jika user belum pernah order, buat order baru
             if (!user || user.Orders.length === 0) {
-                const order = await Order.create({ UserId });
-                await OrderProduct.create({
-                    OrderId: order.id,
-                    ProductId: productId,
-                    price: product.price,
-                    quantity: quantity,
-                });
+                order = await Order.createOrder(UserId);
             } else {
                 // Jika user sudah pernah order
-                const order = user.Orders[0];
-                await OrderProduct.create({
-                    OrderId: order.id,
-                    ProductId: productId,
-                    price: product.price,
-                    quantity: quantity,
-                });
+                order = user.Orders[0];
             }
 
+            // create order
+            await OrderProduct.addProduct(order.id, productId, product.price, quantity);
+
             //kurangin stock
-            await Product.update(
-                { stock: product.stock - quantity },
-                { where: { id: productId } }
-            );
+            await Product.updateStock(productId, quantity);
 
             res.redirect('/orders');
         } catch (error) {

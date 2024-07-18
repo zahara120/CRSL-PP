@@ -28,6 +28,9 @@ module.exports = (sequelize, DataTypes) => {
       const rawValue = this.getDataValue('createdAt');
       return rawValue ? rawValue.toISOString().slice(0, 10) : null;
     }
+    static async createOrder(UserId) {
+      return await Order.create({ UserId });
+    }
   }
   Order.init({
     UserId: DataTypes.INTEGER,

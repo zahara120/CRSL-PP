@@ -35,29 +35,38 @@ module.exports = (sequelize, DataTypes) => {
 
       return Product.findAll(query)
     }
+    static async updateStock(productId, quantity) {
+      const product = await Product.findByPk(productId);
+      if (product) {
+        Product.update(
+          { stock: product.stock - quantity },
+          { where: { id: productId } }
+        )
+      }
+    }
   }
   Product.init({
     name: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        notNull:{
-          msg : 'name is required'
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'name is required'
         },
-        notEmpty:{
-          msg : 'name is required'
+        notEmpty: {
+          msg: 'name is required'
         }
       }
     },
     description: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        notNull:{
-          msg : 'description is required'
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'description is required'
         },
-        notEmpty:{
-          msg : 'description is required'
+        notEmpty: {
+          msg: 'description is required'
         },
         isValid(value) {
           if (value.split(' ').length < 5) {
@@ -67,14 +76,14 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     price: {
-      type:DataTypes.INTEGER,
-      allowNull:false,
-      validate:{
-        notNull:{
-          msg : 'price is required'
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'price is required'
         },
-        notEmpty:{
-          msg : 'price is required'
+        notEmpty: {
+          msg: 'price is required'
         },
         min: {
           args: 100000,
@@ -83,14 +92,14 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     stock: {
-      type:DataTypes.INTEGER,
-      allowNull:false,
-      validate:{
-        notNull:{
-          msg : 'stock is required'
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'stock is required'
         },
-        notEmpty:{
-          msg : 'stock is required'
+        notEmpty: {
+          msg: 'stock is required'
         },
         min: {
           args: 1,
@@ -99,14 +108,14 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     imageUrl: {
-      type:DataTypes.STRING,
-      allowNull:false,
-      validate:{
-        notNull:{
-          msg : 'imageUrl is required'
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'imageUrl is required'
         },
-        notEmpty:{
-          msg : 'imageUrl is required'
+        notEmpty: {
+          msg: 'imageUrl is required'
         },
         isUrl: {
           args: true,
@@ -115,14 +124,14 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     CategoryId: {
-      type:DataTypes.INTEGER,
-      allowNull:false,
-      validate:{
-        notNull:{
-          msg : 'CategoryId is required'
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: 'CategoryId is required'
         },
-        notEmpty:{
-          msg : 'CategoryId is required'
+        notEmpty: {
+          msg: 'CategoryId is required'
         }
       }
     },

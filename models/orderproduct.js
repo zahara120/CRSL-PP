@@ -12,6 +12,14 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+    static async addProduct(orderId, productId, price, quantity) {
+      return await OrderProduct.create({
+        OrderId: orderId,
+        ProductId: productId,
+        price: price,
+        quantity: quantity,
+      });
+    }
   }
   OrderProduct.init({
     OrderId: DataTypes.INTEGER,
