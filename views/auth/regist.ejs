@@ -6,6 +6,13 @@
     <title>Registrasi</title>
 </head>
 <body>
+    <% if (errors) { %>
+        <ul>
+            <% errors.split(',').forEach(el => { %>
+                <li><%= el %></li>
+            <% }) %>
+        </ul>
+    <% } %>
     <form action="/register" method="post">
         <label for="username">username</label>
         <input type="text" name="username" id="username">

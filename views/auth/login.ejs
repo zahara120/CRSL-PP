@@ -6,6 +6,9 @@
     <title>Login</title>
 </head>
 <body>
+    <% if (errors) { %>
+        <span><%= errors %></span>
+    <% } %>
     <form action="/login" method="post">
         <label for="email">email</label>
         <input type="email" name="email" id="email">
@@ -15,5 +18,6 @@
         <br>
         <button>submit</button>
     </form>
+    <span>atau <a href="/register">register</a></span>
 </body>
 </html>

@@ -12,7 +12,8 @@ class AuthController{
     }
     static async register(req, res){
         try {
-            res.render('auth/regist')
+            const { errors } = req.query
+            res.render('auth/regist', { errors })
         } catch (error) {
             res.send(error)
         }
@@ -25,12 +26,18 @@ class AuthController{
             // res.send(req.body)
             res.redirect('/login')
         } catch (error) {
-            res.send(error)
+            if(error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError'){
+                let errors = error.errors.map(el => el.message)
+                res.redirect(`/register?errors=${errors}`)
+            }else{
+                res.send(error)
+            }
         }
     }
     static async formLogin(req, res){
         try {
-            res.render('auth/login')
+            const { errors } = req.query
+            res.render('auth/login', { errors })
         } catch (error) {
             res.send(error)
         }
@@ -45,10 +52,10 @@ class AuthController{
                     req.session.user = user; 
                     return res.redirect('/products');
                 } else {
-                    return res.send('Invalid email or password');
+                    return res.redirect(`/login?errors=password not valid`)
                 }
             } else {
-                return res.send('User not found');
+                return res.redirect(`/login?errors=user with email ${email} not found`)
             }
         } catch (error) {
             res.send(error)
