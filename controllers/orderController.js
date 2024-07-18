@@ -145,46 +145,68 @@ class OrderController {
             }
 
             const invoiceData = {
-                "documentTitle": "INVOICE",
-                "currency": "USD",
-                "taxNotation": "vat",
-                "marginTop": 25,
-                "marginRight": 25,
-                "marginLeft": 25,
-                "marginBottom": 25,
-                "logo": "https://public.easyinvoice.cloud/img/logo_en_original.png",
-                "sender": {
-                    "company": "Zahara's Production",
-                    "address": "123 Main St",
-                    "zip": "45678",
-                    "city": "Jakarta",
-                    "country": "Indonesia"
+                apiKey: "free", // Use your production apiKey in a real application
+                mode: "development", 
+                sender: {
+                    company: "Your Company",
+                    address: "mana aja",
+                    zip: "123",
+                    city: "Jakarta",
+                    country: "Indonesia"
                 },
-                "client": {
-                    "company": order.User.username,
-                    "address": "123 Main St",
-                    "zip": "45678",
-                    "city": "Jakarta",
-                    "country": "Indonesia"
+                client: {
+                    company: order.User.username,
+                    address: "mana aja",
+                    zip: "123",
+                    city: "Jakarta",
+                    country: "Indonesia"
                 },
-                
-                "invoiceNumber": order.id,
-                "invoiceDate": new Date().toISOString().slice(0, 10),
-                "products": order.Products.map(item => ({
-                    "quantity": item.OrderProduct.quantity,
-                    "description": item.name,
-                    "price": item.price
+                invoiceNumber: order.id,
+                invoiceDate: new Date().toISOString().slice(0, 10),
+                products: order.Products.map(item => ({
+                    quantity: item.OrderProduct.quantity,
+                    description: item.description,
+                    price: item.price
                 })),
-                "bottomNotice": "Thank you for your business.",
+                bottomNotice: "Thank you for your business.",
             };
-
-            // Generate the invoice PDF
+    
             easyinvoice.createInvoice(invoiceData, function (result) {
+                // The response will contain a base64 encoded PDF file
                 const pdfBase64 = result.pdf;
-                const buffer = Buffer.from(pdfBase64, 'base64');
-                res.setHeader('Content-Disposition', `attachment; filename=invoice_${orderId}.pdf`);
-                res.setHeader('Content-Type', 'application/pdf');
-                res.send(buffer);
+    
+                // Render the PDF in an HTML page
+                const htmlContent = `
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Invoice</title>
+                        <style>
+                            body, html {
+                                width: 100%;
+                                height: 100%;
+                                margin: 0;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: #f5f5f5;
+                            }
+                            iframe {
+                                width: 100%; 
+                                height: 100vh;
+                                border: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <iframe src="data:application/pdf;base64,${pdfBase64}"></iframe>
+                    </body>
+                    </html>
+                `;
+    
+                res.send(htmlContent);
             });
         } catch (error) {
             res.status(500).send(error.message);
