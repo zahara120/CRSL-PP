@@ -37,11 +37,79 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    stock: DataTypes.INTEGER,
-    CategoryId: DataTypes.INTEGER
+    name: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg : 'name is required'
+        },
+        notEmpty:{
+          msg : 'name is required'
+        }
+      }
+    },
+    description: {
+      type:DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg : 'description is required'
+        },
+        notEmpty:{
+          msg : 'description is required'
+        },
+        isValid(value) {
+          if (value.split(' ').length < 5) {
+            throw new Error('description must be at least 5 characters')
+          }
+        }
+      }
+    },
+    price: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg : 'price is required'
+        },
+        notEmpty:{
+          msg : 'price is required'
+        },
+        min: {
+          args: 100000,
+          msg: 'price must be greater than 100000'
+        }
+      }
+    },
+    stock: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg : 'stock is required'
+        },
+        notEmpty:{
+          msg : 'stock is required'
+        },
+        min: {
+          args: 1,
+          msg: 'stock must be greater than 0'
+        }
+      }
+    },
+    CategoryId: {
+      type:DataTypes.INTEGER,
+      allowNull:false,
+      validate:{
+        notNull:{
+          msg : 'CategoryId is required'
+        },
+        notEmpty:{
+          msg : 'CategoryId is required'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Product',
