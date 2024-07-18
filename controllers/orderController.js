@@ -135,8 +135,8 @@ class OrderController {
             const { orderId } = req.params;
             const order = await Order.findByPk(orderId, {
                 include: [
-                    { model: Product }, 
-                    { model: User }     
+                    { model: Product },
+                    { model: User }
                 ]
             });
 
@@ -146,7 +146,10 @@ class OrderController {
 
             const invoiceData = {
                 apiKey: "free", // Use your production apiKey in a real application
-                mode: "development", 
+                mode: "development",
+                images: {
+                    background: "https://public.easyinvoice.cloud/pdf/sample-background.pdf"
+                },
                 sender: {
                     company: "Your Company",
                     address: "mana aja",
@@ -170,12 +173,10 @@ class OrderController {
                 })),
                 bottomNotice: "Thank you for your business.",
             };
-    
+
             easyinvoice.createInvoice(invoiceData, function (result) {
-                // The response will contain a base64 encoded PDF file
                 const pdfBase64 = result.pdf;
-    
-                // Render the PDF in an HTML page
+
                 const htmlContent = `
                     <!DOCTYPE html>
                     <html lang="en">
@@ -205,8 +206,14 @@ class OrderController {
                     </body>
                     </html>
                 `;
-    
-                res.send(htmlContent);
+
+                res.send(`
+                    <script>
+                        const newWindow = window.open("", "_blank");
+                        newWindow.document.write(${JSON.stringify(htmlContent)});
+                        newWindow.document.close();
+                    </script>
+                `);
             });
         } catch (error) {
             res.status(500).send(error.message);
