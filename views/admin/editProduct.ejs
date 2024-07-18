@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Product</title>
+</head>
+<body>
+    <form action="/products/<%= data.id %>/edit" method="post">
+        <label for="name">product name</label>
+        <input type="text" name="name" id="name" value="<%= data.name %>">
+        <br>
+        <label for="description">product description</label>
+        <input type="text" name="description" id="description" value="<%= data.description %>">
+        <br>
+        <label for="price">product price</label>
+        <input type="number" name="price" id="price" value="<%= data.price %>">
+        <br>
+        <label for="stock">product stock</label>
+        <input type="number" name="stock" id="stock" value="<%= data.stock %>">
+        <br>
+        <label for="CategoryId">product category</label>
+        <select name="CategoryId" id="CategoryId">
+            <option value="">select category</option>
+            <% category.forEach(el => { %>
+                <option <%= data.CategoryId === el.id ? 'selected' : '' %> value="<%= el.id %>"><%= el.name %></option>
+            <% }) %>
+        </select>
+        <br>
+        <input type="submit" value="Update Product">
+    </form>
+</body>
+</html>

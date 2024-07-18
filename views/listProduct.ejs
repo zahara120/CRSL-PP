@@ -32,6 +32,10 @@
                     <td><%= el.stock %></td>
                     <td><%= el.Category.name %></td>
                     <td>
+                        <% if (locals.user.role === 'admin') { %>
+                            <a href="/products/<%= el.id %>/edit">edit</a>
+                            <a href="/products/<%= el.id %>/delete">delete</a>
+                        <% } %>
                         <a href="/products/<%= el.id %>/detail">detail</a>
                     </td>
                 </tr>
