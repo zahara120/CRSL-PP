@@ -20,8 +20,7 @@ module.exports = (sequelize, DataTypes) => {
           model: sequelize.models.Product
         }
       })
-      // console.log(order);
-      const totalPrice = order.Products.reduce((sum, product) => sum + product.price, 0);
+      const totalPrice = order.Products.reduce((sum, product) => sum + product.OrderProduct.price, 0);
       return totalPrice;
     }
     get formattedCreatedAt() {

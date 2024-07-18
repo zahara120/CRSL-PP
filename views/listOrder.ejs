@@ -26,6 +26,7 @@
                         <th>Products</th>
                         <th>Price</th>
                         <th>Quantity</th>
+                        <th>Subtotal</th>
                     </tr>
                 </thead>
                 <% if (data) { %>
@@ -43,6 +44,9 @@
                                 </td>
                                 <td>
                                     <%= el.OrderProduct.quantity %>
+                                </td>
+                                <td>
+                                    <%= formatCurrency(el.OrderProduct.price) %>
                                 </td>
                             </tr>
                             <% }) %>
