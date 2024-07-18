@@ -14,7 +14,8 @@ module.exports = {
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       price: {
         type: Sequelize.INTEGER,
@@ -26,6 +27,7 @@ module.exports = {
       },
       CategoryId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references:{
           model:'Categories'
         }

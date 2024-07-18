@@ -31,9 +31,10 @@ class ProductController {
     }
     static async addProduct(req, res) {
         try {
+            const { errors } = req.query
             let data = await Category.findAll()
             // res.send(data)
-            res.render('admin/addProduct', { data })
+            res.render('admin/addProduct', { data, errors })
         } catch (error) {
             res.send(error)
         }
@@ -45,23 +46,29 @@ class ProductController {
             // res.send(req.body)
             res.redirect('/products')
         } catch (error) {
-            res.send(error)
+            if(error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError'){
+                let errors = error.errors.map(el => el.message)
+                res.redirect(`/products/add?errors=${errors}`)
+            }else{
+                res.send(error)
+            }
         }
     }
     static async editProduct(req, res) {
         try {
             const { id } = req.params
+            const { errors } = req.query
             let data = await Product.findByPk(id)
             let category = await Category.findAll()
             // res.send(data)
-            res.render('admin/editProduct', { data, category })
+            res.render('admin/editProduct', { data, category, errors })
         } catch (error) {
             res.send(error)
         }
     }
     static async updateProduct(req, res) {
+        const { id } = req.params
         try {
-            const { id } = req.params
             const { name, description, price, stock, CategoryId } = req.body
             await Product.update(
                 { name, description, price, stock, CategoryId }, 
@@ -70,7 +77,12 @@ class ProductController {
             // res.send(req.body)
             res.redirect('/products')
         } catch (error) {
-            res.send(error)
+            if(error.name === 'SequelizeValidationError' || error.name === 'SequelizeUniqueConstraintError'){
+                let errors = error.errors.map(el => el.message)
+                res.redirect(`/products/${id}/edit?errors=${errors}`)
+            }else{
+                res.send(error)
+            }
         }
     }
     static async deleteProduct(req, res) {

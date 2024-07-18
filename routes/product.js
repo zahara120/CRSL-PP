@@ -10,7 +10,7 @@ product.use(function (req, res, next) {
     if (req.session.user.role === 'admin') {
         next()
     } else {
-        res.redirect('/products?error=anda bukan admin')
+        res.redirect('/products?error=you are not admin')
     }
 })
 

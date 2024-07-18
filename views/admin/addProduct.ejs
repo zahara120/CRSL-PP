@@ -6,6 +6,13 @@
     <title>Add Product</title>
 </head>
 <body>
+    <% if (errors) { %>
+        <ul>
+            <% errors.split(',').forEach(el => { %>
+                <li><%= el %></li>
+            <% }) %>
+        </ul>
+    <% } %>
     <form action="/products/add" method="post">
         <label for="name">product name</label>
         <input type="text" name="name" id="name">
