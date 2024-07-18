@@ -41,8 +41,8 @@ class ProductController {
     }
     static async saveProduct(req, res) {
         try {
-            const { name, description, price, stock, CategoryId } = req.body
-            await Product.create({ name, description, price, stock, CategoryId })
+            const { name, description, price, stock, imageUrl, CategoryId } = req.body
+            await Product.create({ name, description, price, stock, imageUrl, CategoryId })
             // res.send(req.body)
             res.redirect('/products')
         } catch (error) {
@@ -69,9 +69,9 @@ class ProductController {
     static async updateProduct(req, res) {
         const { id } = req.params
         try {
-            const { name, description, price, stock, CategoryId } = req.body
+            const { name, description, price, stock, imageUrl, CategoryId } = req.body
             await Product.update(
-                { name, description, price, stock, CategoryId }, 
+                { name, description, price, stock, imageUrl, CategoryId }, 
                 { where: { id: id }} 
             )
             // res.send(req.body)

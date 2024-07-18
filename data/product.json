@@ -4,6 +4,7 @@
         "description": "graphic tee",
         "price": 319514,
         "stock": 5,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428935413268552/Rectangle_131.png?ex=669a3363&is=6698e1e3&hm=a9ecb683716414ef6e3414c897307e045f81f480734d5bf847ad6584e4732ae8&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 4
     },
     {
@@ -11,6 +12,7 @@
         "description": "cargo shorts",
         "price": 396034,
         "stock": 3,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428935413268552/Rectangle_131.png?ex=669a3363&is=6698e1e3&hm=a9ecb683716414ef6e3414c897307e045f81f480734d5bf847ad6584e4732ae8&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 4
     },
     {
@@ -18,6 +20,7 @@
         "description": "graphic tee",
         "price": 324493,
         "stock": 10,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     },
     {
@@ -25,6 +28,7 @@
         "description": "leather boots",
         "price": 730863,
         "stock": 4,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428935413268552/Rectangle_131.png?ex=669a3363&is=6698e1e3&hm=a9ecb683716414ef6e3414c897307e045f81f480734d5bf847ad6584e4732ae8&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 4
     },
     {
@@ -32,6 +36,7 @@
         "description": "silk scarf",
         "price": 360333,
         "stock": 10,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428870623727626/Rectangle_131.png?ex=669a3354&is=6698e1d4&hm=7fd175b640fcd18c08ba6e51d351cd1473c660a55be04f7c4bf09d69be418573&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 1
     },
     {
@@ -39,6 +44,7 @@
         "description": "denim jacket",
         "price": 950673,
         "stock": 3,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     },
     {
@@ -46,6 +52,7 @@
         "description": "cargo shorts",
         "price": 635545,
         "stock": 5,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     },
     {
@@ -53,6 +60,7 @@
         "description": "cargo shorts",
         "price": 455031,
         "stock": 10,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428782103072808/Rectangle_131.png?ex=669a333f&is=6698e1bf&hm=db36579cdb386d9d83d1bdaeac461d477a70d3efbc4dafe4648c66bca0e8d78a&=&format=webp&quality=lossless&width=705&height=483",
         "CategoryId": 3
     },
     {
@@ -60,6 +68,7 @@
         "description": "silk scarf",
         "price": 834014,
         "stock": 1,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428870623727626/Rectangle_131.png?ex=669a3354&is=6698e1d4&hm=7fd175b640fcd18c08ba6e51d351cd1473c660a55be04f7c4bf09d69be418573&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 1
     },
     {
@@ -67,6 +76,7 @@
         "description": "graphic tee",
         "price": 384254,
         "stock": 2,
+        "imageUrl": "https://media.discordapp.net/attachments/965617673293672498/1263428122402099220/Rectangle_131.png?ex=669a32a1&is=6698e121&hm=c1a158dfc04118c90742e3a9748527834044fc39675dc70777f255a7012d3472&=&format=webp&quality=lossless&width=511&height=350",
         "CategoryId": 5
     }
 ]

@@ -3,55 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>List Product</title>
+    <style>
+        section{
+            min-height: 100vh;
+        }
+    </style>
 </head>
 <body>
     <%- include('components/navbar') %>
-    <h1>List Product</h1>
-    <div>
-        <form action="/products" method="get">
-            <input type="search" name="search" id="search">
-            <button type="submit">search</button>
+    <section class="jumbotron mb-5">
+        <img src="/jumbotron.png" class="img-fluid jumbotron mb-5" alt="jumbotron">
+        <div class="category d-flex flex-column mt-5 gap-3">
+            <h1 class="text-center mb-5">Categories</h1>
+            <div class="d-flex align-items-center gap-4">
+                <% categories.forEach(el => { %>
+                    <div class="d-flex flex-column align-items-center">
+                        <a href="/products?category=<%= el.id %>">
+                            <img src="/c-<%= el.id %>.png" class="rounded" alt="thumbnail">
+                        </a>
+                        <span style="font-size: 14px;"><%= el.name %></span>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+    <section id="sale">
+        <div class="my-5 text-center">
+            <h1 class="mb-2">Product</h1>
+            <span>Grab It Before It’s Too Late</span>
+        </div>
+        <form action="/products#product" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="search..." name="search" id="search">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">search</button>
+            </div>
         </form>
-    </div>
-    <div>
-        <% categories.forEach(el => { %>
-            <a href="/products?category=<%= el.id %>"><%= el.name %></a>
-        <% }) %>
-    </div>
-    <table>
-        <thead>
-            <tr>
-                <th>no</th>
-                <th>id</th>
-                <th>name</th>
-                <th>description</th>
-                <th>price</th>
-                <th>stock</th>
-                <th>category_id</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% data.forEach((el, index) => { %>
-                <tr>
-                    <td><%= index+1 %></td>
-                    <td><%= el.id %></td>
-                    <td><%= el.name %></td>
-                    <td><%= el.description %></td>
-                    <td><%= formatCurrency(el.price) %></td>
-                    <td><%= el.stock %></td>
-                    <td><%= el.Category.name %></td>
-                    <td>
-                        <% if (locals.user.role === 'admin') { %>
-                            <a href="/products/<%= el.id %>/edit">edit</a>
-                            <a href="/products/<%= el.id %>/delete">delete</a>
-                        <% } %>
-                        <a href="/products/<%= el.id %>/detail">detail</a>
-                    </td>
-                </tr>
-            <% }) %>
-        </tbody>
-    </table>
+        <div class="container" id="product">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <% data.forEach((el, index) => { %>
+                    <div class="col">
+                        <div class="card-product">
+                            <img src="<%= el.imageUrl %>" alt="img" width="286px" height="196px">
+                            <div class="product-desc">
+                                <h6 class=""><%= el.name %></h6>
+                                <div class="mb-2" style="font-size: 14px;">
+                                    <p class="overflow-hidden text-truncate"><%= el.description %></p>
+                                    <p class="fw-bold"><%= formatCurrency(el.price) %></p>
+                                    <p>Stock: <%= el.stock %></p>
+                                    <p>Category: <%= el.Category.name %></p>
+                                </div>
+                                <p>
+                                    <% if (locals.user.role === 'admin') { %>
+                                        <a href="/products/<%= el.id %>/edit" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="/products/<%= el.id %>/delete" class="btn btn-sm btn-danger">Delete</a>
+                                    <% } %>
+                                    <a href="/products/<%= el.id %>/detail" class="btn btn-sm btn-secondary">Detail</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

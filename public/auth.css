@@ -1,4 +1,7 @@
-@import url('style.css');
+a{
+    text-decoration: none !important;
+    /* color: black !important; */
+}
 
 body {
     display: flex;
@@ -15,6 +18,7 @@ body {
     background: #F4CC00;
     gap: 50px;
     padding: 0 100px;
+    min-height: 100vh;
 }
 
 .login-form{
@@ -22,4 +26,14 @@ body {
     background: white;
     padding: 30px 40px;
     border-radius: 24px;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 20px;
 }
