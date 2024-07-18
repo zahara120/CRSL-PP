@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>List Order</title>
+    <title>History Order</title>
     <style>
         section{
             min-height: 100vh;
@@ -49,6 +49,11 @@
                     </tbody>
                     <% } %>
             </table>
+            <% if (!data.length) { %>
+                <div class="alert alert-danger" role="alert">
+                    No Data
+                </div>
+            <% } %>
         </section>
 </body>
 
