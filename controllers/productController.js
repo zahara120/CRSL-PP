@@ -24,7 +24,7 @@ class ProductController {
                 include: Category
             })
             // res.send(data)
-            res.render('detailProduct', { data })
+            res.render('detailProduct', { data, formatCurrency })
         } catch (error) {
             res.send(error)
         }

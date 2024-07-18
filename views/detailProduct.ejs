@@ -4,58 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Detail Product</title>
+    <style>
+        section{
+            min-height: 100vh;
+            padding: 0 100px;   
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
     <%- include('components/navbar') %>
-    <h1>Detail Product</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>description</th>
-                <th>price</th>
-                <th>stock</th>
-                <th>category</th>
-                <th>quantity</th>
-                <th>action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <%= data.id %>
-                </td>
-                <td>
-                    <%= data.name %>
-                </td>
-                <td>
+    <section class="my-5">
+        <h1 class="mb-5">Detail Product</h1>
+        <div class="d-flex gap-5">
+            <div class="d-flex flex-column gap-2">
+                <img src="<%= data.imageUrl %>" alt="">
+                <div class="d-flex gap-3 justify-content-center">
+                    <img class="rounded" width="85px" height="83px" src="<%= data.imageUrl %>" alt="">
+                    <img class="rounded" width="85px" height="83px" src="<%= data.imageUrl %>" alt="">
+                    <img class="rounded" width="85px" height="83px" src="<%= data.imageUrl %>" alt="">
+                    <img class="rounded" width="85px" height="83px" src="<%= data.imageUrl %>" alt="">
+                    <img class="rounded" width="85px" height="83px" src="<%= data.imageUrl %>" alt="">
+                </div>
+            </div>
+            <div>
+                <h1><%= data.name %></h1>
+                <p>More Remaining Stock Available: <span class="text-success"><%= data.stock %></span></p>
+                <h3><%= formatCurrency(data.price) %></h3>
+                <hr>
+                <p>
+                    Description:
                     <%= data.description %>
-                </td>
-                <td>
-                    <%= data.price %>
-                </td>
-                <td>
-                    <%= data.stock %>
-                </td>
-                <td>
-                    <%= data.Category.name %>
-                </td>
+                </p>
+                <p>Category: <%= data.Category.name %></p>
                 <form action="/orders/<%= data.id %>" method="post">
-                    <td>
-                        <button type="button" id="decrement">-</button>
-                        <input type="number" name="quantity" id="quantity" required value="1" min="1">
-                        <button type="button" id="increment">+</button>
-                    </td>
-                    <td>
-                        <button type="submit">Buy</button>
-                    </td>
+                    <div class="d-flex gap-2 mb-3">
+                        <button type="button" class="btn btn-outline-secondary" id="decrement">-</button>
+                        <input style="width: 60px;" type="number" class="form-control" name="quantity" id="quantity" required value="1" min="1">
+                        <button type="button" class="btn btn-outline-secondary" id="increment">+</button>
+                    </div>
+                    <div>
+                        <button style="width: 100%;" type="submit" class="btn btn-outline-success">Buy</button>
+                    </div>
                 </form>
-            </tr>
-        </tbody>
-    </table>
+            </div>
+        </div>
+    </section>
 </body>
 <script>
     document.getElementById('increment').addEventListener('click', function () {

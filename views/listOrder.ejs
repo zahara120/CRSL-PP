@@ -26,7 +26,6 @@
                         <th>Products</th>
                         <th>Price</th>
                         <th>Quantity</th>
-                        <th>Action</th>
                     </tr>
                 </thead>
                 <% if (data) { %>
@@ -45,11 +44,6 @@
                                 <td>
                                     <%= el.OrderProduct.quantity %>
                                 </td>
-                                <td>
-                                    <a href="/orders/<%= data.id %>/delete">
-                                        <button class="btn btn-sm btn-danger">delete</button>
-                                    </a>
-                                </td>
                             </tr>
                             <% }) %>
                     </tbody>
@@ -60,6 +54,9 @@
                     Status : <span class="badge text-bg-warning"><%= data.status %></span>
                 </p>
                 <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
+                <a href="/orders/<%= data.id %>/delete">
+                    <button class="btn btn-outline-danger">Delete Order</button>
+                </a>
                 <a href="/orders/<%= data.id %>/checkout">
                     <button type="button" class="btn btn-dark">Proceed To Checkout</button>
                 </a>
