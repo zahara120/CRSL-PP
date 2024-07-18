@@ -1,8 +1,10 @@
+const { Op } = require('sequelize')
 const { Product, Category } = require('../models')
 class ProductController{
     static async showListProduct(req, res){
         try {
             let data = await Product.findAll({
+                where : {stock: { [Op.gt]: 0}},
                 include: Category
             })
             // res.send(data)

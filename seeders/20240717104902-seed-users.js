@@ -1,5 +1,4 @@
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -12,14 +11,17 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    let data = require('../data/user.json').map(el => {
+    const bcrypt = require('bcrypt');
+    let data = await Promise.all(require('../data/user.json').map(async (el) => {
+      const hashedPassword = await bcrypt.hash(el.password, 10);
       return {
         ...el,
+        password: hashedPassword,
         createdAt: new Date(),
         updatedAt: new Date()
-      }
-    })
-    await queryInterface.bulkInsert('Users', data)
+      };
+    }));
+    await queryInterface.bulkInsert('Users', data);
   },
 
   async down(queryInterface, Sequelize) {

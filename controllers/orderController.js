@@ -59,6 +59,12 @@ class OrderController {
                 });
             }
 
+            //kurangin stock
+            await Product.update(
+                { stock: product.stock - quantity },
+                { where: { id: productId } }
+            );
+
             res.redirect('/orders');
         } catch (error) {
             res.send(error);

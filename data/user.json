@@ -2,7 +2,7 @@
     {
         "username": "admin",
         "email": "admin@mail.com",
-        "password": "v",
+        "password": "f",
         "role" : "admin"
     }
 ]
