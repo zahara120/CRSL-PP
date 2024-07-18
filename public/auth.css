@@ -1,0 +1,18 @@
+@import url('style.css');
+
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F4CC00;
+    gap: 50px;
+    padding: 0 100px;
+}
+
+.login-form{
+    width: 440px;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 24px;
+}
