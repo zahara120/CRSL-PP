@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/easyinvoice/dist/easyinvoice.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>History Order</title>
     <style>
@@ -26,6 +27,7 @@
                         <th>Status</th>
                         <th>createdAt</th>
                         <th>Total Price</th>
+                        <th>Invoice</th>
                     </tr>
                 </thead>
                 <% if (data) { %>
@@ -43,6 +45,9 @@
                                 </td>
                                 <td>
                                     <%= formatCurrency(el.totalPrice) %>
+                                </td>
+                                <td>
+                                    <a href="/orders/<%= el.id %>/generateInvoice" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">View</a>
                                 </td>
                             </tr>
                             <% }) %>
