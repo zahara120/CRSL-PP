@@ -28,3 +28,8 @@
 .product-desc p{
     margin-bottom: 2px;
 }
+.choose-box{
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 15px 10px;
+}

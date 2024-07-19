@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <title>List Order</title>
     <style>
-        section{
+        section {
             min-height: 100vh;
-            padding: 0 100px;   
+            padding: 0 100px;
             margin: auto;
         }
     </style>
@@ -17,61 +17,170 @@
 
 <body>
     <%- include('components/navbar') %>
-    <section class="my-5">
-        <h1>List Order</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Products</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
+        <section class="my-5">
+            <h1>List Order</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Products</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <% if (data) { %>
+                    <tbody>
+                        <% data.Products.forEach((el, index)=> { %>
+                            <tr>
+                                <td>
+                                    <%= index+1 %>
+                                </td>
+                                <td>
+                                    <%= el.name %>
+                                </td>
+                                <td>
+                                    <%= formatCurrency(el.price) %>
+                                </td>
+                                <td>
+                                    <%= el.OrderProduct.quantity %>
+                                </td>
+                                <td>
+                                    <%= formatCurrency(el.OrderProduct.price) %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                    <% } %>
+            </table>
             <% if (data) { %>
-                <tbody>
-                    <% data.Products.forEach((el, index)=> { %>
-                        <tr>
-                            <td>
-                                <%= index+1 %>
-                            </td>
-                            <td>
-                                <%= el.name %>
-                            </td>
-                            <td>
-                                <%= formatCurrency(el.price) %>
-                            </td>
-                            <td>
-                                <%= el.OrderProduct.quantity %>
-                            </td>
-                            <td>
-                                <%= formatCurrency(el.OrderProduct.price) %>
-                            </td>
-                        </tr>
-                        <% }) %>
-                </tbody>
+                <div class="my-5">
+                    <div>
+                        <p>
+                            Status : <span class="badge text-bg-warning">
+                                <%= data.status %>
+                            </span>
+                        </p>
+                        <p>Order Total : <%= formatCurrency(totalPrice) %>
+                        </p>
+                    </div>
+                    <!-- <div>
+                        <hr>
+                        <button type="button" style="width: 100%; text-align: start;"
+                            class="choose-box btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            Choose Delivery Method
+                        </button>
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Delivery Method</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                style="width: 100%; text-align: start;">
+                                                <p>Standard (Rp 9.000) - JNE</p>
+                                                <span style="font-size: 12px;">Receive by 8 - 12 Nov</span>
+                                            </button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                style="width: 100%; text-align: start;">
+                                                <p>Regular (Rp 10.000) - J&T</p>
+                                                <span style="font-size: 12px;">Receive by 8 - 12 Nov</span>
+                                            </button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                style="width: 100%; text-align: start;">
+                                                <p>Cargo (Rp 15.000) - SiCepat Gokil</p>
+                                                <span style="font-size: 12px;">Receive by 8 - 12 Nov</span>
+                                            </button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="button" class="btn btn-outline-dark"
+                                                style="width: 100%; text-align: start;">
+                                                <p>Next Day (Rp 18.000) - AnterAja</p>
+                                                <span style="font-size: 12px;">Receive by 8 - 12 Nov</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-dark">Confirm Delivery Method</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <button type="button" style="width: 100%; text-align: start;"
+                            class="choose-box btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#paymentMethod">
+                            Choose Payment Method
+                        </button>
+                        <div class="modal fade" id="paymentMethod" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Payment Method</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Bank Transfer</p>
+                                        <div class="mb-3">
+                                            <button type="button" style="border: none; width: 100%; text-align: start;" class="btn btn-outline-dark">
+                                                <p class="d-flex gap-2 align-items-center">
+                                                    <img src="/bank-lg.svg" alt="">
+                                                    Bank BCA
+                                                </p>
+                                            </button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="button" style="border: none; width: 100%; text-align: start;" class="btn btn-outline-dark">
+                                                <p class="d-flex gap-2 align-items-center">
+                                                    <img src="/mandiri-lg.svg" alt="">
+                                                    Bank Mandiri
+                                                </p>
+                                            </button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <button type="button" style="border: none; width: 100%; text-align: start;" class="btn btn-outline-dark">
+                                                <p class="d-flex gap-2 align-items-center">
+                                                    <img src="/bni-lg.svg" alt="">
+                                                    Bank BNI
+                                                </p>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-dark">Confirm Payment Method</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div> -->
+                </div>
+                <a href="/orders/<%= data.id %>/delete">
+                    <button class="btn btn-outline-danger">Delete Order</button>
+                </a>
+                <a href="/orders/<%= data.id %>/checkout">
+                    <button type="button" class="btn btn-dark">Proceed To Checkout</button>
+                </a>
                 <% } %>
-        </table>
-        <% if (data) { %>
-            <p>
-                Status : <span class="badge text-bg-warning"><%= data.status %></span>
-            </p>
-            <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
-            <a href="/orders/<%= data.id %>/delete">
-                <button class="btn btn-outline-danger">Delete Order</button>
-            </a>
-            <a href="/orders/<%= data.id %>/checkout">
-                <button type="button" class="btn btn-dark">Proceed To Checkout</button>
-            </a>
-        <% } %>
-        <% if (!data) { %>
-            <div class="alert alert-danger" role="alert">
-                No Data
-            </div>
-            <a href="/products" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Keep Shopping!</a>
-        <% } %>
-    </section>
+                    <% if (!data) { %>
+                        <div class="alert alert-danger" role="alert">
+                            No Data
+                        </div>
+                        <a href="/products"
+                            class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Keep
+                            Shopping!</a>
+                        <% } %>
+        </section>
 </body>
 
 </html>
