@@ -51,7 +51,7 @@
             </div>
         </form>
         <div class="container" id="product">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="d-flex flex-wrap g-4">
                 <% data.forEach((el, index) => { %>
                     <div class="col">
                         <div class="card-product">
@@ -59,17 +59,23 @@
                             <div class="product-desc">
                                 <h6 class=""><%= el.name %></h6>
                                 <div class="mb-2" style="font-size: 14px;">
-                                    <p class="overflow-hidden text-truncate"><%= el.description %></p>
+                                    <p class="overflow-hidden text-truncate text-secondary"><%= el.description %></p>
                                     <p class="fw-bold"><%= formatCurrency(el.price) %></p>
                                     <p>Stock: <%= el.stock %></p>
                                     <p>Category: <%= el.Category.name %></p>
                                 </div>
                                 <p>
                                     <% if (locals.user.role === 'admin') { %>
-                                        <a href="/products/<%= el.id %>/edit" class="btn btn-sm btn-outline-primary">Edit</a>
-                                        <a href="/products/<%= el.id %>/delete" class="btn btn-sm btn-outline-danger">Delete</a>
+                                        <a href="/products/<%= el.id %>/edit">
+                                            <button class="btn btn-sm btn-outline-primary" type="button">Edit</button>
+                                        </a>
+                                        <a href="/products/<%= el.id %>/delete">
+                                            <button class="btn btn-sm btn-outline-danger" type="button">Delete</button>
+                                        </a>
                                     <% } %>
-                                    <a href="/products/<%= el.id %>/detail" class="btn btn-sm btn-outline-secondary">Detail</a>
+                                    <a href="/products/<%= el.id %>/detail">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
+                                    </a>
                                 </p>
                             </div>
                         </div>
