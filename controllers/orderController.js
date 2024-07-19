@@ -73,7 +73,8 @@ class OrderController {
                 let errors = error.errors.map(el => el.message)
                 res.redirect(`/products/${productId}/detail?errors=${errors}`)
             } else {
-                res.send(error)
+                // res.send(error)
+                res.redirect(`/products/${productId}/detail?errors=${error}`)
             }
         }
     }
