@@ -18,6 +18,11 @@
 </head>
 <body>
     <%- include('components/navbar') %>
+    <% if (error) { %>
+        <div class="alert alert-danger" role="alert">
+            <p><%= error %></p>
+        </div>
+    <% } %>
     <section class="jumbotron mb-5">
         <img src="/jumbotron.png" class="img-fluid jumbotron mb-5" alt="jumbotron">
         <div class="category d-flex flex-column mt-5 gap-3">

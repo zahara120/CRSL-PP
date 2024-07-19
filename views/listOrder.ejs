@@ -17,61 +17,61 @@
 
 <body>
     <%- include('components/navbar') %>
-        <section class="my-5">
-            <h1>List Order</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Products</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Subtotal</th>
-                    </tr>
-                </thead>
-                <% if (data) { %>
-                    <tbody>
-                        <% data.Products.forEach((el, index)=> { %>
-                            <tr>
-                                <td>
-                                    <%= index+1 %>
-                                </td>
-                                <td>
-                                    <%= el.name %>
-                                </td>
-                                <td>
-                                    <%= formatCurrency(el.price) %>
-                                </td>
-                                <td>
-                                    <%= el.OrderProduct.quantity %>
-                                </td>
-                                <td>
-                                    <%= formatCurrency(el.OrderProduct.price) %>
-                                </td>
-                            </tr>
-                            <% }) %>
-                    </tbody>
-                    <% } %>
-            </table>
+    <section class="my-5">
+        <h1>List Order</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Products</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
             <% if (data) { %>
-                <p>
-                    Status : <span class="badge text-bg-warning"><%= data.status %></span>
-                </p>
-                <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
-                <a href="/orders/<%= data.id %>/delete">
-                    <button class="btn btn-outline-danger">Delete Order</button>
-                </a>
-                <a href="/orders/<%= data.id %>/checkout">
-                    <button type="button" class="btn btn-dark">Proceed To Checkout</button>
-                </a>
-            <% } %>
-            <% if (!data) { %>
-                <div class="alert alert-danger" role="alert">
-                    No Data
-                </div>
-                <a href="/products" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Keep Shopping!</a>
-            <% } %>
-        </section>
+                <tbody>
+                    <% data.Products.forEach((el, index)=> { %>
+                        <tr>
+                            <td>
+                                <%= index+1 %>
+                            </td>
+                            <td>
+                                <%= el.name %>
+                            </td>
+                            <td>
+                                <%= formatCurrency(el.price) %>
+                            </td>
+                            <td>
+                                <%= el.OrderProduct.quantity %>
+                            </td>
+                            <td>
+                                <%= formatCurrency(el.OrderProduct.price) %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+                <% } %>
+        </table>
+        <% if (data) { %>
+            <p>
+                Status : <span class="badge text-bg-warning"><%= data.status %></span>
+            </p>
+            <p>Total Harga : <%= formatCurrency(totalPrice) %></p>
+            <a href="/orders/<%= data.id %>/delete">
+                <button class="btn btn-outline-danger">Delete Order</button>
+            </a>
+            <a href="/orders/<%= data.id %>/checkout">
+                <button type="button" class="btn btn-dark">Proceed To Checkout</button>
+            </a>
+        <% } %>
+        <% if (!data) { %>
+            <div class="alert alert-danger" role="alert">
+                No Data
+            </div>
+            <a href="/products" class="link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Keep Shopping!</a>
+        <% } %>
+    </section>
 </body>
 
 </html>
