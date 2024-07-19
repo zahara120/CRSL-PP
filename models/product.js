@@ -100,10 +100,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         notEmpty: {
           msg: 'stock is required'
-        },
-        min: {
-          args: 1,
-          msg: 'stock must be greater than 0'
         }
       }
     },
